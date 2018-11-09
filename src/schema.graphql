@@ -1,0 +1,25 @@
+type Query {
+  projectById(projectId: ID!): Project
+  completedTasks: [Task!]!
+  tasks: [Task!]!
+  projects: [Project!]!
+}
+
+type Mutation {
+  createProject(name: String!): Project
+  createTask(title: String!, projectId: ID!): Task
+  markTaskAsCompleted(taskId: ID!): Task
+}
+
+type Project {
+  id: ID!
+  name: String!
+  tasks: [Task!]!
+}
+
+type Task {
+  id: ID!
+  title: String!
+  project: Project!
+  isCompleted: Boolean!
+}
